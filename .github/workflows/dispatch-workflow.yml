@@ -1,17 +1,17 @@
-name: dispatch-workflow
-
+# .github/workflows/dispatch_action.yml (레포 A)
+name: dispatch_action
 on:
- push:
-   branches:
-     - main
+  push:
+    branches:
+      - main   # A 저장소 기본 브랜치명에 맞게 수정
 
 jobs:
- dispatch:
-   runs-on: ubuntu-latest
-   steps:
-     - name: Trigger repository dispatch
-       uses: peter-evans/repository-dispatch@v1
-       with:
-         token: ${{ secrets.GH_PAT }}
-         repository: kons2003/Programmers_Badge_Generator
-         event-type: trigger-workflow
+  dispatch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger repository dispatch
+        uses: peter-evans/repository-dispatch@v1
+        with:
+          token: ${{ secrets.GH_PAT }}
+          repository: kons2003/kons-programmers-rank   # 레포 B로 바꾸기
+          event-type: trigger-workflow
